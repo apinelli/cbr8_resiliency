@@ -3,15 +3,6 @@ import sys
 import re
 import datetime
 
-#device = {
-#  'device_type': 'cisco_ios',
-#  'host': '10.0.56.42',
-#  'username': 'provciscoangelop',
-#  'password': '6eF#N68VW#',
-#  'fast_cli': False,
-#  'conn_timeout': 20
-#}
-
 device = {
   'device_type': 'cisco_ios',
   'host': '10.122.151.13',
