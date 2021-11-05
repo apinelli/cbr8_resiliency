@@ -31,7 +31,7 @@ pattern = '%H:%M:%S.%f %a %b %d %Y'
 datetime_object = datetime.strptime(output_alt, pattern)
 ts=datetime_object.strftime('%s')
 
-with open('cbr8_collection.txt', 'a') as f:
+with open('/home/devasc/cbr8/cbr8_resiliency/cbr8_collection.txt', 'a') as f:
   print('------------------------------------------------------------', file=f)
   print('Timestamp: ' + ts, file=f)
   for i in range(10):

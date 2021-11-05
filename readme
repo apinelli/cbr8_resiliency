@@ -1,0 +1,4 @@
+
+Adjust the following line for the (full path) where you want the collection to be:
+
+with open('/home/devasc/cbr8/cbr8_resiliency/cbr8_collection.txt', 'a') as f:
