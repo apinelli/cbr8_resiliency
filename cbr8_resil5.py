@@ -1,7 +1,7 @@
 from netmiko import ConnectHandler
 import sys
 import re
-import datetime
+from datetime import datetime
 
 device = {
   'device_type': 'cisco_ios',
@@ -25,13 +25,15 @@ output5 = ssh_connect.send_command('show cable resil-rf-status down')
 output6 = ssh_connect.send_command('show cable modem cm-status')
 output7 = ssh_connect.send_command('!')
 
-regexp_1 = re.compile(r'^(\d\d:\d\d:\d\d.\d\d\d)\s(CST)\s([A-Z][a-z][a-z]\s[A-Z][a-z][a-z]\s.*)')
-re_match = regexp_1.match(output)
-output_alt = re_match.group(1) + ' ' + re_match.group(3)
+m = re.search(r'^(\d\d:\d\d:\d\d.\d\d\d)\s([A-Z][A-Z][A-Z])\s([A-Z][a-z][a-z]\s[A-Z][a-z][a-z]\s.*)', output, re.MULTILINE)
+output_alt = m.group(1) + ' ' + m.group(3)
+pattern = '%H:%M:%S.%f %a %b %d %Y'
+datetime_object = datetime.strptime(output_alt, pattern)
+ts=datetime_object.strftime('%s')
 
 with open('cbr8_collection.txt', 'a') as f:
   print('------------------------------------------------------------', file=f)
-  print(output_alt, file=f)
+  print('Timestamp: ' + ts, file=f)
   for i in range(10):
     print(output7, file=f)
 
