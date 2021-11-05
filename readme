@@ -2,3 +2,7 @@
 Adjust the following line for the (full path) where you want the collection to be:
 
 with open('/home/devasc/cbr8/cbr8_resiliency/cbr8_collection.txt', 'a') as f:
+
+Crontab suggestion:
+
+0 * * * * /home/devasc/cbr8/cbr8_resiliency/venv/bin/python /home/devasc/cbr8/cbr8_resiliency/cbr8_resil5.py >> /home/devasc/cbr8/cbr8_resiliency/cron.log 2>&1
